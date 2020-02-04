@@ -1,33 +1,32 @@
-{% if site.style == 'dark' %}
-  {% assign icon_color = "#ffffff" %}
-{% else %}
-  {% assign icon_color = "#24292e" %}
-{% endif %}
 
-{% assign content = page.content %}
+<div id="hire">
+    <div class="contianer">
+        <ul class="nav justify-content-end">
 
-{% assign posts_total = site.posts | size %}
+            <li class="nav-item">
+                <button class="btn" type="button" id="hireme">
+                    <a class="hire-link active" href="mailto: {{site.email}}"> <i class="fa fa-paper-plane"> </i>   HIRE ME</a>
+                </button>
+            </li>
 
-{% assign user = site.github.owner %}
+        </ul>
+    </div>
+</div>
 
-{% if page.path contains '_posts' %}
-  {% assign page_title = page.title %}
-  {% assign meta_description = page.content | strip_html | strip_newlines | xml_escape | truncate: 300 %}
-{% else %}
-  {% assign page_title = user.name %}
-  {% assign meta_description = user.bio | strip_html | strip_newlines | xml_escape | truncate: 300 %}
-{% endif %}
+<div class="social-media-bar">
+    {% include social.html social= site.data.profile.social %}
+</div>
 
-<!doctype html>
-<html class="min-height-full">
-  <head>
-    <meta charset="utf-8">
-    <title>{{ page_title }}</title>
-    <meta name="description" content="{{ meta_description }}" />
-    <meta property="og:title" content="{{ user.name }}" />
-    <meta property="og:image" content="{{ user.avatar_url }}" />
-    <meta property="og:description" content="{{ meta_description }}" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="{{ "/assets/styles.css" | relative_url }}" rel="stylesheet" type="text/css">
-  </head>
-  <body class="bg-white min-height-full" {% if site.style == 'dark' %}style="background-color: #2f363d !important"{% endif %}>
+<div id="profile-image">
+
+    <img class="rounded-circle mx-auto d-block img-fluid" src="/images/profile.jpg"></img>
+    <h1 class="profile-name "> {{ site.data.profile.name}} </h1>
+    <h1 class="profile-title text-center"> {{ site.data.profile.title }} </h1>
+
+</div>
+
+<div id="profile-description">
+    <div class="container col-md-6 col-md-offset-3 ">
+        <i class="fa fa-info text-white"></i>  <p class="text-justify" > {{ site.data.profile.description }} </p>
+    </div>
+</div>
